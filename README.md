@@ -1,6 +1,7 @@
 ## Generate React-SSR Project
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Muzikanto/react-express-generator.svg)](https://greenkeeper.io/)
+[![npm version](https://badge.fury.io/js/react-express-generator.svg)](npmjs.com/package/react-express-generator)
 
 ## Run Generate Project
 
