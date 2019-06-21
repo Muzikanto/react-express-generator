@@ -33,16 +33,16 @@
     "url": "https://github.com/Muzikanto"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
+    "fs": "0.0.2",
     "inquirer": "^6.4.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/node": "^10.12.12",
+    "@types/node": "^12.0.8",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "ts-loader": "^5.3.1",
-    "ts-mocha": "^2.0.0",
+    "mocha": "^6.1.4",
+    "ts-loader": "^6.0.4",
+    "ts-mocha": "^6.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.2.2",
     "webpack": "^4.27.1",
