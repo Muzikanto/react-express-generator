@@ -1,0 +1,5 @@
+.idea
+node_modules
+build
+source/.idea
+react-ssr
