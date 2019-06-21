@@ -5,11 +5,21 @@
 
 ## Run Generate Project
 
-```typescript
+```
 ❯ npm i react-express-generator -g
 ❯ react-ssr-generate
 ```
 
+```
+? Project name: (react-ssr): <Enter Name>
+? Project Configuration: <Select Configurations>
+❯ ( ) jest
+❯ ( ) tslint
+❯ ( ) scss|sass
+❯ ( ) husky
+? Place Project in Heroku (Y/n)
+```
+---
 ## What's inside?
 
 - [create-react-app](https://github.com/facebook/create-react-app) as base and `react-scripts` without ejecting;
@@ -21,7 +31,7 @@
 - [material-ui](https://github.com/mui-org/material-ui) Components
 - [webpack](https://webpack.js.org) build
 - [hmr](https://webpack.js.org/guides/hot-module-replacement/) (Hot Module Resolver) in webpack
-
+---
 ## Usage
 
 ``` bash
@@ -79,6 +89,9 @@ app
 │       │   index.ts
 │       │   render.tsx
 │ 
+│   .env
+│   .npmrc
+│   .gitignore
 │   README.md
 │   package.json
 │   tsconfig.json
