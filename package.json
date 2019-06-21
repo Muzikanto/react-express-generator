@@ -1,6 +1,6 @@
 {
   "name": "react-express-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React and Express",
   "engines": {
     "node": "8.x.x"
@@ -33,7 +33,7 @@
     "url": "https://github.com/Muzikanto"
   },
   "dependencies": {
-    "fs": "0.0.2",
+    "fs": "0.0.1-security",
     "inquirer": "^6.4.1"
   },
   "devDependencies": {
