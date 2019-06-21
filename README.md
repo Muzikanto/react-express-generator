@@ -1,5 +1,7 @@
 ## Generate React-SSR Project
 
+[![npm version](https://badge.fury.io/js/react-express-generator.svg)](npmjs.com/package/react-express-generator)
+
 ## Run Generate Project
 
 ```typescript
