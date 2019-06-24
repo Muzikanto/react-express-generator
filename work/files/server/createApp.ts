@@ -1,4 +1,8 @@
-import {join} from 'path';
+import {IConfig} from "../../typings";
+
+export default function getCreateApp({cluster, pg}: IConfig) {
+    return '' +
+`import {join} from 'path';
 import * as express from 'express';
 import * as compression from 'compression';
 import * as bodyParser from 'body-parser';
@@ -8,6 +12,8 @@ import {preloadAll} from 'react-loadable';
 import {createServer} from "http"
 import ConnectRoutes from "./routes";
 import {Server} from "http"
+${pg ? `import sessionOptions from "./lib/sessionStore";
+import loadUser from "./middleware/loadUser";` : ''}
 
 const isDev = process.env.NODE_ENV === 'development';
 const staticStorage = join(__dirname, '..', '..', 'build');
@@ -33,6 +39,11 @@ async function createApp(port: number | string): Promise<Server> {
         app.use(compression());
         app.use(express.static(staticStorage));
     }
+    
+    ${ pg ? 
+   `app.use(sessionOptions);
+    app.use(loadUser);` : ''
+    }
 
     app.use(ConnectRoutes(express.Router()));
 
@@ -40,10 +51,13 @@ async function createApp(port: number | string): Promise<Server> {
 
     server = createServer(app);
     server.listen(port, () => {
-        console.error(`Node ${isDev ? 'dev server' : 'cluster worker ' + process.pid}: listening on port ${port}`);
+        console.error(\`Node \${isDev ? 'dev server' : ${cluster ? '`cluster worker ${process.pid}`' : 'server'} }: listening on port \${port}\`);
     });
 
     return server;
 }
 
 export default createApp;
+
+`
+}

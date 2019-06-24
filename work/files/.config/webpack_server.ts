@@ -1,3 +1,6 @@
+export default function getWebpackServer(scss: boolean) {
+    return '' +
+`
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
@@ -51,7 +54,7 @@ const plugins = [
         }
     }),
     new webpack.LoaderOptionsPlugin({
-        test: /\.tsx/,
+        test: /\\.tsx/,
         options: {
             optimization,
             mode
@@ -107,12 +110,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\\.tsx?$/,
                 loaders: 'ts-loader',
-            },
-            //SCSS_START
-            {
-                test: /\.(css|scss|sass)$/,
+            }, 
+            ${scss ? `{
+                test: /\\.(css|scss|sass)$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [{
@@ -126,13 +128,16 @@ module.exports = {
                         loader: "sass-loader"
                     }]
                 })
-            },
-            //SCSS_END
+            },` :
+            `{
+                 test: /.css$/,
+                 loaders: 'null-loader'
+            },`}
             {
-                test: /\.svg$/,
+                test: /\\.svg$/,
                 loader: 'svg-inline-loader'
             }, {
-                test: /\.png$/,
+                test: /\\.png$/,
                 exclude: /(node_modules)/,
                 loader: 'file-loader'
             }
@@ -140,3 +145,6 @@ module.exports = {
     },
     plugins
 };
+
+`
+}

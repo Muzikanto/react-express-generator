@@ -12,11 +12,22 @@
 
 ```
 ? Project name: (react-ssr): <Enter Name>
+
 ? Project Configuration: <Select Configurations>
+❯ (*) scss|sass
 ❯ ( ) jest
 ❯ ( ) tslint
-❯ ( ) scss|sass
 ❯ ( ) husky
+
+? Server Configuration: <Select Configurations>
+❯ (*) cluster
+❯ ( ) postgreSql
+❯ ( ) postgreSql-session
+
+? Client Configuration: <Select Configurations>
+❯ (*) material-ui
+❯ ( ) history
+
 ? Place Project in Heroku (Y/n)
 ```
 ---
@@ -54,52 +65,6 @@ Point your browser to [http://localhost:3000/](http://localhost:3000/).
 ```
 
 Point your browser to [http://localhost:3000/](http://localhost:3000/).
-
-## Structure
-```typescript
-app
-└───.config
-│   │   webpack.client.js
-│   │   webpack.server.js
-│   
-└───src
-│   │ index.tsx
-│   │ registerServiceWorker.ts
-│   │
-│   └───pages
-│   │   │
-│   │   └───.App
-│   │   │
-│   │   └───FrontPage
-│   │   │ 
-│   │   └───NotFoundPage
-│   │
-│   └───reducers
-│       │   index.ts
-│       │   typings.ts
-│  
-└───public
-│       │   favicon.ico
-│       │   manifest.json
-│    
-└───server
-│   │   index.ts
-│   │   createApp.ts
-│   └───routes
-│       │   index.ts
-│       │   render.tsx
-│ 
-│   .env
-│   .npmrc
-│   .gitignore
-│   README.md
-│   package.json
-│   tsconfig.json
-│   LICENSE
-│*  tslint.json
-│*  postcss.config.js
-│*  jest.config.js
-```
 
 ### License [MIT](LICENSE)
 

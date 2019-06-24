@@ -1,4 +1,6 @@
-export function getPackage({name, heroku, husky, jest, scss}: {name: string, heroku: boolean, husky: boolean, jest: boolean, scss: boolean}) {
+import {IConfig} from "../typings";
+
+export function getPackage({name, heroku, husky, jest, scss, materialUi, cluster, tslint, pg, pgSession}: IConfig) {
     const keywords = [
         "node",
         ...(heroku ? ['heroku'] : []),
@@ -36,10 +38,22 @@ export function getPackage({name, heroku, husky, jest, scss}: {name: string, her
         keywords,
         license: 'MIT',
         dependencies: {
-            "@material-ui/core": "^4.0.0",
-            "@material-ui/icons": "^3.0.2",
+            ...(materialUi ? {
+                "@material-ui/core": "^4.0.0",
+                "@material-ui/icons": "^3.0.2",
+            } : {}),
             "body-parser": "1.18.3",
-            "cluster": "^0.7.7",
+            ...(cluster ? {
+                "cluster": "^0.7.7",
+            } : {}),
+            ...(pg ? {
+                "pg": "^7.6.1",
+            }: {}),
+            ...(pgSession ? {
+                "connect-pg-simple": "^5.0.0",
+                "express-session": "^1.15.6",
+                "crypto": "^1.0.1",
+            }: {}),
             "compression": "1.7.3",
             "cookie-parser": "1.4.3",
             "express": "4.16.3",
@@ -47,7 +61,6 @@ export function getPackage({name, heroku, husky, jest, scss}: {name: string, her
             "os": "^0.1.1",
             "react": "^16.6.1",
             "react-dom": "^16.6.1",
-            "react-jss": "^8.6.1",
             "react-redux": "^5.1.1",
             "react-router": "4.3.1",
             "react-router-dom": "4.3.1",
@@ -69,12 +82,18 @@ export function getPackage({name, heroku, husky, jest, scss}: {name: string, her
             "@types/node": "10.12.10",
             "@types/react": "16.7.7",
             "@types/react-dom": "16.0.10",
-            "@types/react-jss": "^8.6.3",
             "@types/react-loadable": "5.4.1",
             "@types/react-redux": "^6.0.9",
             "@types/react-router": "4.4.0",
             "@types/react-router-dom": "4.3.1",
             "@types/webpack-env": "1.13.6",
+            ...(pg ? {
+                "@types/pg": "^7.4.11",
+            }: {}),
+            ...(pgSession ? {
+                "@types/connect-pg-simple": "^4.2.0",
+                "@types/express-session": "^1.15.11",
+            }: {}),
             "babel-loader": "^8.0.5",
             ...(scss ? {
                 "node-sass": "^4.12.0",
@@ -107,7 +126,9 @@ export function getPackage({name, heroku, husky, jest, scss}: {name: string, her
             "ts-loader": "5.2.1",
             "ts-node-dev": "1.0.0-pre.30",
             "tslib": "^1.9.3",
-            "tslint": "^5.17.0",
+            ...(tslint ? {
+                "tslint": "^5.17.0",
+            } : {}),
             "tslint-webpack-plugin": "^2.0.2",
             "typescript": "^3.4.5",
             "webpack-cli": "3.1.2",
